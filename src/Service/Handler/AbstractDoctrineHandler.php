@@ -47,7 +47,7 @@ abstract class AbstractDoctrineHandler implements
         // Сортировка
         if ($query instanceof OrderableQueryInterface && $query->getOrderField()) {
             $qbr->orderBy(
-                $query->getOrderField(),
+                static::TABLE_ALIAS . '.' . $query->getOrderField(),
                 $query->getOrderDirection()
             );
         }
