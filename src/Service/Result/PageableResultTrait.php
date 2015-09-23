@@ -1,5 +1,7 @@
 <?php
-namespace Werkint\Bundle\QueryBundle\Service\Query;
+namespace Werkint\Bundle\QueryBundle\Service\Result;
+
+use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
  * Ответ для пагинации

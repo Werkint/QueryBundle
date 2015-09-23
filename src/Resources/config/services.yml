@@ -1,1 +1,27 @@
+parameters:
+  werkint_query.event_listener.pageableresultlistener.class:
+    Werkint\Bundle\QueryBundle\Service\EventListener\PageableResultListener
+
+  werkint_query.queryparamconverter.class:
+    Werkint\Bundle\QueryBundle\Service\QueryParamConverter
+
+  werkint_query.queryprocessor.class:
+    Werkint\Bundle\QueryBundle\Service\QueryProcessor
+
 services:
+  werkint_query.event_listener.pageableresultlistener:
+    class: %werkint_query.event_listener.pageableresultlistener.class%
+    arguments:
+      - @knp_paginator
+
+  werkint_query.queryparamconverter:
+    class: %werkint_query.queryparamconverter.class%
+    arguments:
+      - @jms_serializer
+    tags:
+      - { name: request.param_converter, converter: werkint_query.query }
+
+  werkint_query.queryprocessor:
+    class: %werkint_query.queryprocessor.class%
+    arguments:
+      - @event_dispatcher

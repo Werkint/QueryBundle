@@ -16,4 +16,10 @@ interface HandlerInterface
      * @return ResultInterface
      */
     public function query(QueryInterface $query);
+
+    /**
+     * @param QueryInterface $query
+     * @return boolean
+     */
+    public function isQuerySupported(QueryInterface $query);
 }

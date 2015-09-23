@@ -1,6 +1,8 @@
 <?php
 namespace Werkint\Bundle\QueryBundle\Service\Query;
 
+use JMS\Serializer\Annotation as Serializer;
+
 /**
  * Запрос, который позволяет пагинировать коллекцию
  *
@@ -13,12 +15,16 @@ trait PageableQueryTrait
      * стоит @see pageGroup
      *
      * @var int|null
+     * @Serializer\Type("integer")
+     * @Serializer\Groups("query")
      */
     private $page;
     /**
      * Разбиение по страницам. Количество элементов на страницу
      *
      * @var int|null
+     * @Serializer\Type("integer")
+     * @Serializer\Groups("query")
      */
     private $pageGroup;
 

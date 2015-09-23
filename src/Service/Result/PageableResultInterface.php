@@ -1,5 +1,5 @@
 <?php
-namespace Werkint\Bundle\QueryBundle\Service\Query;
+namespace Werkint\Bundle\QueryBundle\Service\Result;
 
 /**
  * @see    PageableResultTrait

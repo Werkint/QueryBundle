@@ -1,6 +1,8 @@
 <?php
 namespace Werkint\Bundle\QueryBundle\Service\Query;
 
+use JMS\Serializer\Annotation as Serializer;
+
 /**
  * Запрос, который позволяет сортировать коллекцию
  *
@@ -10,10 +12,14 @@ trait OrderableQueryTrait
 {
     /**
      * @var string|null
+     * @Serializer\Type("string")
+     * @Serializer\Groups("query")
      */
     private $orderField;
     /**
      * @var string
+     * @Serializer\Type("string")
+     * @Serializer\Groups("query")
      */
     private $orderDirection;
 

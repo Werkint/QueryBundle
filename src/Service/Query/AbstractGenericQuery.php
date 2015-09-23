@@ -1,6 +1,8 @@
 <?php
 namespace Werkint\Bundle\QueryBundle\Service\Query;
 
+use Werkint\Bundle\QueryBundle\Service\Result\GenericResult;
+
 /**
  * Типичный запрос
  *
@@ -23,5 +25,13 @@ abstract class AbstractGenericQuery implements
     {
         $this->clearOrder();
         $this->clearPage();
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function createResponse(array $objects)
+    {
+        return new GenericResult($objects);
     }
 }
