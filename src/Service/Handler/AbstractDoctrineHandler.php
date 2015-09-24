@@ -38,6 +38,14 @@ abstract class AbstractDoctrineHandler implements
                 ->setMaxResults($query->getPageGroup());
         }
 
+        // Сортировка
+        if ($query instanceof OrderableQueryInterface && $query->getOrderField()) {
+            $qbr->orderBy(
+                static::TABLE_ALIAS . '.' . $query->getOrderField(),
+                $query->getOrderDirection()
+            );
+        }
+
         $ids = $this->getIds(clone $qbr);
 
         // Создаем QB
