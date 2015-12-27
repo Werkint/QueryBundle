@@ -8,7 +8,7 @@ use Werkint\Bundle\QueryBundle\Service\Result\GenericResult;
  *
  * @author Bogdan Yurov <bogdan@yurov.me>
  */
-abstract class AbstractGenericQuery implements
+class GenericQuery implements
     QueryInterface,
     OrderableQueryInterface,
     PageableQueryInterface
