@@ -31,7 +31,7 @@ abstract class AbstractDoctrineHandler implements
         $this->applyFilters($qbr, $query);
 
         // Если нужно - разбиваем по страницам
-        if ($query instanceof PageableQueryInterface && $query->getPage()) {
+        if ($query instanceof PageableQueryInterface && $query->getPageGroup()) {
             $totalCount = $this->getTotalCount(clone $qbr);
             $limitFrom = ($query->getPage() - 1) * $query->getPageGroup();
             $qbr->setFirstResult($limitFrom)
@@ -67,7 +67,7 @@ abstract class AbstractDoctrineHandler implements
         $result = $query->createResponse($queryResult);
 
         if (isset($totalCount)) {
-            if ($result instanceof PageableResultInterface && method_exists($result, 'setPageResult')) {
+            if ($result instanceof PageableResultInterface && method_exists($result, 'setPageResult') && $query->getPageGroup()) {
                 /** @var PageableResultTrait $result */
 
                 $pageCount = $query->getPageGroup() ? ceil($totalCount / $query->getPageGroup()) : 1;
